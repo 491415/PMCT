@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PMCT"
+version = "1.0.0"
+description = "Praćenje Maloprodajnih Cijena Trgovaca - skripte za preuzimanje datoteka cijena od trgovačkih lanaca u Hrvatskoj."
+authors = [
+    {name = "Dino Kralj", email = "dino.kralj@hnb.hr"}
+]
+classifiers = [
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: Croatian",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = [
+    "beautifulsoup4>=4.12.2",
+    "chardet>=5.2.0",
+    "environs>=14.3.0",
+    "lxml>=6.0.2",
+    "oracledb>=3.3.0",
+    "pandas>=2.3.3",
+    "pip-system-certs>=5.2",
+    "pydantic>=2.11.9",
+    "python-calamine>=0.5.3",
+    "requests>=2.32.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=25.9.0",
+    "mypy>=1.18.2",
+    "ruff>=0.13.2",
+]
+
+[project.urls]
+Homepage = "https://github.hnb.hr/dkralj/PMCT"
+Repository = "https://github.hnb.hr/dkralj/PMCT"
+Documentation = "https://github.hnb.hr/dkralj/PMCT/README.md"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+]
